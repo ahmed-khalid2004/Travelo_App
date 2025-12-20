@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # proj_v1
 
 A new Flutter project.
@@ -15,3 +16,6 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 "# Mobile_App" 
+=======
+# Mobile_App
+>>>>>>> b1020bd4d1e8a4684d9aa4b0904295b5eb746715
