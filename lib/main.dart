@@ -4,6 +4,7 @@ import 'sign_in_page.dart';
 import 'sign_up_page.dart';
 import 'success_screen.dart';
 import 'forget_password_page.dart';
+import 'home_page.dart'; // New import for HomePage
 
 void main() {
   runApp(const MyApp());
@@ -22,11 +23,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),
-        '/onboarding': (context) => const OnboardingScreen(), // FIXED: Changed from /home
+        '/onboarding': (context) => const OnboardingScreen(),
         '/signin': (context) => const SignInPage(),
         '/signup': (context) => const SignUpPage(),
         '/forgot': (context) => const ForgetPasswordPage(),
         '/success': (context) => const SuccessScreen(),
+        '/home': (context) => const HomePage(), // Added home route
       },
       debugShowCheckedModeBanner: false,
     );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'sign_up_page.dart';
-import 'forget_password_page.dart'; // Add this import
+import 'forget_password_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -104,12 +104,11 @@ class SignInPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 
-                // FIXED: Made "Forgot password?" clickable
+                // Clickable "Forgot password?"
                 Align(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      // Navigate to Forget Password page
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -134,9 +133,8 @@ class SignInPage extends StatelessWidget {
                   height: 55,
                   child: ElevatedButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Sign in pressed')),
-                      );
+                      // Navigate to HomePage after successful sign in
+                      Navigator.pushReplacementNamed(context, '/home');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF4DB8B8),
