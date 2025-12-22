@@ -8,7 +8,6 @@ class OnboardingScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image
           Container(
             decoration: const BoxDecoration(
               image: DecorationImage(
@@ -17,7 +16,6 @@ class OnboardingScreen extends StatelessWidget {
               ),
             ),
           ),
-          // Semi-transparent white card at bottom
           Positioned.fill(
             child: Align(
               alignment: Alignment.bottomCenter,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'sign_up_page.dart';
-import 'forget_password_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -109,12 +108,6 @@ class SignInPage extends StatelessWidget {
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ForgetPasswordPage(),
-                        ),
-                      );
                     },
                     child: const Text(
                       'Forgot password?',

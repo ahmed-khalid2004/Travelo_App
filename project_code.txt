@@ -8,11 +8,664 @@
 
 void registerPlugins() {}
 
-===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\forget_password_page.dart =====
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\models\destination_model.dart =====
+class Destination {
+  final String id;
+  final String title;
+  final String location;
+  final String country;
+  final double rating;
+  final String mainImage;
+  final List<String> galleryImages;
+  final String description;
+  final List<String> categories;
+  bool isFavorite;
+
+  Destination({
+    required this.id,
+    required this.title,
+    required this.location,
+    required this.country,
+    required this.rating,
+    required this.mainImage,
+    required this.galleryImages,
+    required this.description,
+    required this.categories,
+    this.isFavorite = false,
+  });
+}
+
+// Sample destinations data with CORRECT images
+class DestinationsData {
+  static List<Destination> getAllDestinations() {
+    return [
+      Destination(
+        id: '1',
+        title: 'Taj Mahal',
+        location: 'Agra',
+        country: 'India',
+        rating: 4.8,
+        mainImage: 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1587474260584-136574528ed5?w=400',
+          'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=400',
+          'https://images.unsplash.com/photo-1548013146-72479768bada?w=400',
+        ],
+        description: 'The Taj Mahal is an ivory-white marble mausoleum on the southern bank of the river Yamuna in Agra. It was commissioned in 1631 by the Mughal emperor Shah Jahan to house the tomb of his favourite wife, Mumtaz Mahal.',
+        categories: ['Historical', 'Popular', 'Romantic'],
+      ),
+      Destination(
+        id: '2',
+        title: 'Cappadocia',
+        location: 'Central Anatolia',
+        country: 'Turkey',
+        rating: 4.9,
+        mainImage: 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=400',
+          'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=400',
+          'https://images.unsplash.com/photo-1526048598645-62b31f067fb8?w=400',
+        ],
+        description: 'Cappadocia is a semi-arid region in central Turkey noted for its distinctive fairy chimneys, tall cone-shaped rock formations. The region is famous for hot air balloon rides and underground cities.',
+        categories: ['Adventure', 'Popular', 'Nature'],
+      ),
+      Destination(
+        id: '3',
+        title: 'Eiffel Tower',
+        location: 'Paris',
+        country: 'France',
+        rating: 4.9,
+        mainImage: 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1549144511-f099e773c147?w=400',
+          'https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?w=400',
+          'https://images.unsplash.com/photo-1431274172761-fca41d930114?w=400',
+        ],
+        description: 'The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris. It is named after the engineer Gustave Eiffel, whose company designed and built the tower.',
+        categories: ['Historical', 'Popular', 'Romantic'],
+      ),
+      Destination(
+        id: '4',
+        title: 'Temples of Luxor',
+        location: 'Luxor',
+        country: 'Egypt',
+        rating: 4.7,
+        mainImage: 'https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1539768942893-daf53e448371?w=400',
+          'https://images.unsplash.com/photo-1568322445389-f64ac2515020?w=400',
+          'https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=400',
+        ],
+        description: 'The Luxor Temple is a large Ancient Egyptian temple complex located on the east bank of the Nile River. It was constructed approximately 1400 BCE and is one of the most impressive monuments in Egypt.',
+        categories: ['Historical', 'Ancient', 'Cultural'],
+      ),
+      Destination(
+        id: '5',
+        title: 'Great Wall of China',
+        location: 'Beijing',
+        country: 'China',
+        rating: 4.8,
+        mainImage: 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1547981609-4b6bfe67ca0b?w=400',
+          'https://images.unsplash.com/photo-1529925008535-66f0d90c4787?w=400',
+          'https://images.unsplash.com/photo-1558976825-6b1b03a03719?w=400',
+        ],
+        description: 'The Great Wall of China is a series of fortifications made of stone, brick, tamped earth, wood, and other materials. It was built to protect the Chinese states against raids and invasions.',
+        categories: ['Historical', 'Adventure', 'Ancient'],
+      ),
+      Destination(
+        id: '6',
+        title: 'Al Ula',
+        location: 'Medina Province',
+        country: 'Saudi Arabia',
+        rating: 4.8,
+        mainImage: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1591608971362-f08b2a75731a?w=400',
+          'https://images.unsplash.com/photo-1578895101408-1a36b834405b?w=400',
+          'https://images.unsplash.com/photo-1580837119756-563d608dd119?w=400',
+        ],
+        description: 'AlUla is an ancient oasis city located in Medina Province. It features stunning rock formations, ancient archaeological sites, and the famous Hegra, Saudi Arabia\'s first UNESCO World Heritage Site.',
+        categories: ['Historical', 'Desert', 'Ancient'],
+      ),
+      Destination(
+        id: '7',
+        title: 'Santorini',
+        location: 'Cyclades',
+        country: 'Greece',
+        rating: 4.9,
+        mainImage: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=400',
+          'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400',
+          'https://images.unsplash.com/photo-1580837119756-563d608dd119?w=400',
+        ],
+        description: 'Santorini is a volcanic island in the Cyclades group of the Greek islands. It is famous for its dramatic views, stunning sunsets, whitewashed houses, and blue-domed churches.',
+        categories: ['Beach', 'Romantic', 'Relaxation'],
+      ),
+      Destination(
+        id: '8',
+        title: 'Machu Picchu',
+        location: 'Cusco Region',
+        country: 'Peru',
+        rating: 4.9,
+        mainImage: 'https://images.unsplash.com/photo-1587595431973-160d0d94add1?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1526392060635-9d6019884377?w=400',
+          'https://images.unsplash.com/photo-1560699138-816c1a4e0976?w=400',
+          'https://images.unsplash.com/photo-1580837119756-563d608dd119?w=400',
+        ],
+        description: 'Machu Picchu is a 15th-century Inca citadel located in the Eastern Cordillera of southern Peru. It is the most familiar icon of Inca civilization and sits 2,430 meters above sea level.',
+        categories: ['Historical', 'Adventure', 'Ancient'],
+      ),
+      Destination(
+        id: '9',
+        title: 'Bosphorus Strait',
+        location: 'Istanbul',
+        country: 'Turkey',
+        rating: 4.7,
+        mainImage: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=400',
+          'https://images.unsplash.com/photo-1527838832700-5059252407fa?w=400',
+          'https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?w=400',
+        ],
+        description: 'The Bosphorus is a narrow strait that connects the Black Sea with the Sea of Marmara. It divides Istanbul between Europe and Asia, and offers spectacular views of both continents.',
+        categories: ['Relaxation', 'Cultural', 'Nature'],
+      ),
+      Destination(
+        id: '10',
+        title: 'Maldives Beach',
+        location: 'Male',
+        country: 'Maldives',
+        rating: 4.9,
+        mainImage: 'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800',
+        galleryImages: [
+          'https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=400',
+          'https://images.unsplash.com/photo-1589197331516-e4d6c5b1d7a7?w=400',
+          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+        ],
+        description: 'The Maldives is a tropical paradise known for its crystal-clear turquoise waters, white sandy beaches, and luxury overwater bungalows. Perfect for relaxation and water sports.',
+        categories: ['Beach', 'Relaxation', 'Romantic'],
+      ),
+    ];
+  }
+}
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\destination_detail_screen.dart =====
+import 'package:flutter/material.dart';
+// import 'services/user_preferences.dart';
+
+class DestinationDetailScreen extends StatefulWidget {
+  final String id;
+  final String title;
+  final String location;
+  final String country;
+  final double rating;
+  final String mainImage;
+  final List<String> galleryImages;
+  final String description;
+
+const DestinationDetailScreen({
+  super.key,
+  required this.id,
+  required this.title,
+  required this.location,
+  required this.country,
+  required this.rating,
+  required this.mainImage,
+  required this.galleryImages,
+  required this.description,
+});
+
+
+  @override
+  State<DestinationDetailScreen> createState() => _DestinationDetailScreenState();
+}
+
+class _DestinationDetailScreenState extends State<DestinationDetailScreen> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize favorite status
+    // final userPrefs = UserPreferences();
+    // isFavorite = userPrefs.isFavorite(widget.id);
+  }
+
+  void _toggleFavorite() {
+    setState(() {
+      isFavorite = !isFavorite;
+      // final userPrefs = UserPreferences();
+      // userPrefs.toggleFavorite(widget.id);
+    });
+
+    // Show feedback
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          isFavorite 
+              ? 'â¤ï¸ Added to favorites!' 
+              : 'Removed from favorites',
+        ),
+        duration: const Duration(seconds: 1),
+        backgroundColor: isFavorite 
+            ? const Color(0xFF4DD5C5) 
+            : Colors.grey[600],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header with back button and favorite
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      icon: Icon(
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: isFavorite ? Colors.red : Colors.black,
+                      ),
+                      onPressed: _toggleFavorite,
+                    ),
+                  ],
+                ),
+              ),
+              
+              // Main Image
+              Container(
+                height: 300,
+                width: double.infinity,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: NetworkImage(widget.mainImage),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              
+              const SizedBox(height: 20),
+              
+              // Title and Rating
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            widget.title,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: const Color(0xFF4DD5C5),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Row(
+                            children: [
+                              const Icon(Icons.star, color: Colors.white, size: 18),
+                              const SizedBox(width: 4),
+                              Text(
+                                widget.rating.toString(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        const Icon(Icons.location_on, size: 20, color: Colors.grey),
+                        const SizedBox(width: 4),
+                        Text(
+                          '${widget.location}, ${widget.country}',
+                          style: const TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Description',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                      widget.description,
+                      style: const TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                        height: 1.5,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Gallery',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(height: 12),
+                    // Image Gallery
+                    SizedBox(
+                      height: 80,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: widget.galleryImages.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            width: 100,
+                            margin: const EdgeInsets.only(right: 12),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              image: DecorationImage(
+                                image: NetworkImage(widget.galleryImages[index]),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\favorites_screen.dart =====
+import 'package:flutter/material.dart';
+// import 'models/destination_model.dart';
+// import 'services/user_preferences.dart';
+// import 'destination_detail_screen.dart';
+
+class FavoritesScreen extends StatefulWidget {
+  const FavoritesScreen({Key? key}) : super(key: key);
+
+  @override
+  State<FavoritesScreen> createState() => _FavoritesScreenState();
+}
+
+class _FavoritesScreenState extends State<FavoritesScreen> {
+  // In real implementation, get favorites from UserPreferences
+  // final userPrefs = UserPreferences();
+  // final allDestinations = DestinationsData.getAllDestinations();
+  
+  List<Map<String, dynamic>> getFavoriteDestinations() {
+    // This would filter allDestinations based on userPrefs.favoriteIds
+    // For now, return sample data
+    return [
+      {
+        'id': '2',
+        'title': 'Cappadocia',
+        'location': 'Central Anatolia',
+        'country': 'Turkey',
+        'rating': 4.9,
+        'mainImage': 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800',
+      },
+      {
+        'id': '3',
+        'title': 'Eiffel Tower',
+        'location': 'Paris',
+        'country': 'France',
+        'rating': 4.9,
+        'mainImage': 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800',
+      },
+    ];
+  }
+
+  void _removeFavorite(String id) {
+    setState(() {
+      // userPrefs.toggleFavorite(id);
+    });
+    
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('Removed from favorites'),
+        duration: Duration(seconds: 1),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final favorites = getFavoriteDestinations();
+    
+    return Scaffold(
+      backgroundColor: const Color(0xFFF5F8FA),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: Text(
+          'Favorites (${favorites.length})',
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: favorites.isEmpty
+          ? _buildEmptyState()
+          : ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: favorites.length,
+              itemBuilder: (context, index) {
+                return _buildFavoriteCard(favorites[index]);
+              },
+            ),
+    );
+  }
+
+  Widget _buildEmptyState() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            Icons.favorite_border,
+            size: 100,
+            color: Colors.grey[300],
+          ),
+          const SizedBox(height: 20),
+          Text(
+            'No favorites yet',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[400],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            'Start exploring and add destinations\nto your favorites!',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey[400],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildFavoriteCard(Map<String, dynamic> destination) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to detail screen
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => DestinationDetailScreen(...)));
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(16),
+                    ),
+                    image: DecorationImage(
+                      image: NetworkImage(destination['mainImage']),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 12,
+                  right: 12,
+                  child: GestureDetector(
+                    onTap: () => _removeFavorite(destination['id']),
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                        size: 20,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          destination['title'],
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF4DD5C5),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Row(
+                          children: [
+                            const Icon(Icons.star, color: Colors.white, size: 14),
+                            const SizedBox(width: 4),
+                            Text(
+                              destination['rating'].toString(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      const Icon(Icons.location_on, size: 16, color: Colors.grey),
+                      const SizedBox(width: 4),
+                      Text(
+                        '${destination['location']}, ${destination['country']}',
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\forget_password_page.dart =====
 import 'package:flutter/material.dart';
 import 'verification_page.dart';
 
-// ------------------- Page 1: Enter Mobile Number -------------------
 class ForgetPasswordPage extends StatelessWidget {
   const ForgetPasswordPage({super.key});
 
@@ -43,7 +696,6 @@ class ForgetPasswordPage extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               
-              // Illustration Image
               SizedBox(
                 height: 250,
                 child: Image.network(
@@ -54,7 +706,6 @@ class ForgetPasswordPage extends StatelessWidget {
               
               const SizedBox(height: 40),
               
-              // Title Text
               const Text(
                 'Enter your mobile number',
                 style: TextStyle(
@@ -66,7 +717,6 @@ class ForgetPasswordPage extends StatelessWidget {
               
               const SizedBox(height: 40),
               
-              // Phone Number Input Field
               TextField(
                 controller: phoneController,
                 keyboardType: TextInputType.phone,
@@ -87,7 +737,9 @@ class ForgetPasswordPage extends StatelessWidget {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
-                    borderSide: BorderSide(color: const Color(0xFF2DD4A3).withOpacity(0.3)),
+                    borderSide: BorderSide(
+                      color: const Color(0xFF2DD4A3).withValues(alpha: 0.3), // FIXED
+                    ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -99,13 +751,11 @@ class ForgetPasswordPage extends StatelessWidget {
               
               const SizedBox(height: 40),
               
-              // Submit Button
               SizedBox(
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigate to Verification Page
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -137,84 +787,744 @@ class ForgetPasswordPage extends StatelessWidget {
     );
   }
 }
-===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\main.dart =====
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\home_page.dart =====
 import 'package:flutter/material.dart';
-import 'onboarding_screen.dart';
-import 'sign_in_page.dart';
-import 'sign_up_page.dart';
-import 'success_screen.dart';
-import 'forget_password_page.dart'; // Add this import
+// import 'models/destination_model.dart';
+// import 'services/user_preferences.dart';
+// import 'destination_detail_screen.dart';
+// import 'favorites_screen.dart';
+// import 'mood_selection_screen.dart';
+// import 'places_list_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Travelo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const SplashScreen(),
-        '/home': (context) => const OnboardingScreen(),
-        '/signin': (context) => const SignInPage(),
-        '/signup': (context) => const SignUpPage(),
-        '/forgot': (context) => const ForgetPasswordPage(), 
-        '/success': (context) => const SuccessScreen(),// Fixed: Now points to ForgetPasswordPage
-        // Add your home route here when you create HomePage
-        // '/home': (context) => const HomePage(),
-      },
-      debugShowCheckedModeBanner: false,
-    );
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final TextEditingController _searchController = TextEditingController();
+  String _selectedCategory = 'All';
+  List<dynamic> _searchResults = [];
+  bool _isSearching = false;
+  
+  // Replace with: final List<Destination> allDestinations = DestinationsData.getAllDestinations();
+  final List<Map<String, dynamic>> allDestinations = [
+    {
+      'id': '1',
+      'title': 'Taj Mahal',
+      'location': 'Agra',
+      'country': 'India',
+      'rating': 4.8,
+      'mainImage': 'https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800',
+      'categories': ['Historical', 'Popular', 'Romantic'],
+    },
+    {
+      'id': '2',
+      'title': 'Cappadocia',
+      'location': 'Central Anatolia',
+      'country': 'Turkey',
+      'rating': 4.9,
+      'mainImage': 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800',
+      'categories': ['Adventure', 'Popular', 'Nature'],
+    },
+    {
+      'id': '3',
+      'title': 'Eiffel Tower',
+      'location': 'Paris',
+      'country': 'France',
+      'rating': 4.9,
+      'mainImage': 'https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800',
+      'categories': ['Historical', 'Popular', 'Romantic'],
+    },
+    {
+      'id': '4',
+      'title': 'Temples of Luxor',
+      'location': 'Luxor',
+      'country': 'Egypt',
+      'rating': 4.7,
+      'mainImage': 'https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=800',
+      'categories': ['Historical', 'Ancient', 'Cultural'],
+    },
+    {
+      'id': '5',
+      'title': 'Great Wall of China',
+      'location': 'Beijing',
+      'country': 'China',
+      'rating': 4.8,
+      'mainImage': 'https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800',
+      'categories': ['Historical', 'Adventure', 'Ancient'],
+    },
+    {
+      'id': '6',
+      'title': 'Al Ula',
+      'location': 'Medina Province',
+      'country': 'Saudi Arabia',
+      'rating': 4.8,
+      'mainImage': 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800',
+      'categories': ['Historical', 'Desert', 'Ancient'],
+    },
+  ];
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
   }
-}
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  // Search function
+  void _performSearch(String query) {
+    if (query.isEmpty) {
+      setState(() {
+        _isSearching = false;
+        _searchResults = [];
+      });
+      return;
+    }
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      if (mounted) {
-        Navigator.pushReplacementNamed(context, '/onboarding');
-      }
+    setState(() {
+      _isSearching = true;
+      _searchResults = allDestinations.where((destination) {
+        final titleMatch = destination['title'].toString().toLowerCase().contains(query.toLowerCase());
+        final locationMatch = destination['location'].toString().toLowerCase().contains(query.toLowerCase());
+        final countryMatch = destination['country'].toString().toLowerCase().contains(query.toLowerCase());
+        return titleMatch || locationMatch || countryMatch;
+      }).toList();
     });
   }
 
+  // Get filtered destinations by category
+  List<dynamic> _getFilteredDestinations() {
+    if (_selectedCategory == 'All') {
+      return allDestinations;
+    }
+    return allDestinations.where((dest) {
+      final categories = dest['categories'] as List<String>;
+      return categories.contains(_selectedCategory);
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final displayedDestinations = _getFilteredDestinations();
+    
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+      backgroundColor: const Color(0xFFF5F8FA),
+      body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'Images/MainLogo.jpeg',
-              width: 150,
-              height: 150,
-              fit: BoxFit.contain,
+            // Header Section
+            Container(
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Color(0xFF4DD5C5),
+                        child: Icon(Icons.person, color: Colors.white),
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.notifications_outlined),
+                        onPressed: () {},
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    'Discover Your',
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.black87,
+                    ),
+                  ),
+                  RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Next ',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        TextSpan(
+                          text: 'Destination',
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF4DD5C5),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  // Search Bar
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: TextField(
+                      controller: _searchController,
+                      onChanged: _performSearch,
+                      decoration: const InputDecoration(
+                        hintText: 'Search for destinations',
+                        hintStyle: TextStyle(color: Colors.grey),
+                        border: InputBorder.none,
+                        icon: Icon(Icons.search, color: Colors.grey),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 20)
+
+            // Search Results or Main Content
+            Expanded(
+              child: _isSearching && _searchResults.isNotEmpty
+                  ? _buildSearchResults()
+                  : _isSearching && _searchResults.isEmpty
+                      ? _buildNoResults()
+                      : _buildMainContent(displayedDestinations),
+            ),
           ],
         ),
       ),
     );
   }
+
+  Widget _buildSearchResults() {
+    return ListView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: _searchResults.length,
+      itemBuilder: (context, index) {
+        final destination = _searchResults[index];
+        return _buildSearchResultCard(destination);
+      },
+    );
+  }
+
+  Widget _buildNoResults() {
+    return const Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.search_off, size: 80, color: Colors.grey),
+          SizedBox(height: 16),
+          Text(
+            'No destinations found',
+            style: TextStyle(fontSize: 18, color: Colors.grey),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSearchResultCard(Map<String, dynamic> destination) {
+    return GestureDetector(
+      onTap: () {
+        // Navigate to destination detail
+        // Navigator.push(context, MaterialPageRoute(builder: (context) => DestinationDetailScreen(...)));
+      },
+      child: Container(
+        margin: const EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 10,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                image: DecorationImage(
+                  image: NetworkImage(destination['mainImage']),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    destination['title'],
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      const Icon(Icons.location_on, size: 14, color: Colors.grey),
+                      const SizedBox(width: 4),
+                      Text(
+                        '${destination['location']}, ${destination['country']}',
+                        style: const TextStyle(fontSize: 12, color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+              decoration: BoxDecoration(
+                color: const Color(0xFF4DD5C5),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  const Icon(Icons.star, color: Colors.white, size: 14),
+                  const SizedBox(width: 4),
+                  Text(
+                    destination['rating'].toString(),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMainContent(List<dynamic> destinations) {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const SizedBox(height: 20),
+          // Action Buttons
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildIconButton(Icons.bookmark_border, 'Favorites', () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritesScreen()));
+              }),
+              _buildIconButton(Icons.place, 'Places', () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => PlacesListScreen()));
+              }),
+              _buildIconButton(Icons.mood, 'Mood', () {
+                // Navigator.push(context, MaterialPageRoute(builder: (context) => MoodSelectionScreen()));
+              }),
+            ],
+          ),
+          const SizedBox(height: 30),
+          // Categories
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Categories',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 16),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      _buildCategoryChip('All'),
+                      _buildCategoryChip('Popular'),
+                      _buildCategoryChip('Historical'),
+                      _buildCategoryChip('Adventure'),
+                      _buildCategoryChip('Beach'),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 20),
+          // All Destinations
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  _selectedCategory == 'All' ? 'All Destinations' : _selectedCategory,
+                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  '${destinations.length} places',
+                  style: const TextStyle(color: Color(0xFF4DD5C5), fontWeight: FontWeight.w600),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 12),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              children: destinations.map((dest) => _buildDestinationCard(dest)).toList(),
+            ),
+          ),
+          const SizedBox(height: 30),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildIconButton(IconData icon, String label, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+            child: Icon(icon, color: const Color(0xFF4DD5C5), size: 28),
+          ),
+          const SizedBox(height: 8),
+          Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w500)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildCategoryChip(String label) {
+    final isSelected = _selectedCategory == label;
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          _selectedCategory = label;
+          _isSearching = false;
+          _searchController.clear();
+        });
+      },
+      child: Container(
+        margin: const EdgeInsets.only(right: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFF4DD5C5) : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black87,
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildDestinationCard(Map<String, dynamic> destination) {
+    // final userPrefs = UserPreferences();
+    // final isFav = userPrefs.isFavorite(destination['id']);
+    
+    return Container(
+      width: 200,
+      margin: const EdgeInsets.only(right: 16),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Stack(
+            children: [
+              Container(
+                height: 150,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+                  image: DecorationImage(
+                    image: NetworkImage(destination['mainImage']),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 8,
+                right: 8,
+                child: Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    shape: BoxShape.circle,
+                  ),
+                  child: const Icon(
+                    Icons.favorite_border,
+                    color: Color(0xFF4DD5C5),
+                    size: 20,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(12),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  destination['title'],
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 4),
+                Row(
+                  children: [
+                    const Icon(Icons.location_on, size: 14, color: Colors.grey),
+                    const SizedBox(width: 4),
+                    Text(
+                      destination['country'],
+                      style: const TextStyle(fontSize: 12, color: Colors.grey),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      'Explore now',
+                      style: TextStyle(fontSize: 11, color: Colors.grey),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF4DD5C5),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.star, color: Colors.white, size: 12),
+                          const SizedBox(width: 4),
+                          Text(
+                            destination['rating'].toString(),
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
-===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\onboarding_screen.dart =====
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\mood_selection_screen.dart =====
+import 'package:flutter/material.dart';
+import 'places_list_screen.dart';
+
+class MoodSelectionScreen extends StatelessWidget {
+  const MoodSelectionScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: const Text(
+          'Mood Trips',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Choose your Trip',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Mood',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF4DD5C5),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Trip suggestion based on your mood or activities',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              padding: const EdgeInsets.all(16),
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              childAspectRatio: 0.85,
+              children: [
+                _buildMoodCard(context, 'ðŸ–ï¸', 'Relax Mode', const Color(0xFFE8F5F3)),
+                _buildMoodCard(context, 'ðŸŒ', 'Adventurous Mode', const Color(0xFFE8F5F3)),
+                _buildMoodCard(context, 'ðŸ“¸', 'Photo Spot Mode', const Color(0xFFE8F5F3)),
+                _buildMoodCard(context, 'ðŸ›ï¸', 'Historical Mode', const Color(0xFFE8F5F3)),
+                _buildMoodCard(context, 'ðŸ‘¨â€ðŸ‘©â€ðŸ‘§', 'Family + Kids Mode', const Color(0xFFE8F5F3)),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PlacesListScreen()),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF4DD5C5),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                ),
+                child: const Text(
+                  'Show Recommendations',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMoodCard(BuildContext context, String emoji, String title, Color bgColor) {
+    return Container(
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: const Color(0xFF4DD5C5).withOpacity(0.3),
+          width: 2,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Text(
+              emoji,
+              style: const TextStyle(fontSize: 40),
+            ),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\onboarding_screen.dart =====
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
@@ -309,10 +1619,145 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 }
-===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\sign_in_page.dart =====
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\places_list_screen.dart =====
+import 'package:flutter/material.dart';
+
+class PlacesListScreen extends StatelessWidget {
+  const PlacesListScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFF5F8FA),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: const Text(
+          'Relax Places',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          _buildPlaceListItem(
+            context,
+            'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400',
+            'TÃ¼rkiye',
+            'Bosphorus strait',
+          ),
+          _buildPlaceListItem(
+            context,
+            'https://images.unsplash.com/photo-1539768942893-daf53e448371?w=400',
+            'Egypt',
+            'Pyramids',
+          ),
+          _buildPlaceListItem(
+            context,
+            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400',
+            'Chaina',
+            'Beach + c. Rest',
+          ),
+          _buildPlaceListItem(
+            context,
+            'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400',
+            'Saudi Arabia',
+            'Al ula',
+          ),
+          _buildPlaceListItem(
+            context,
+            'https://images.unsplash.com/photo-1549144511-f099e773c147?w=400',
+            'Paris',
+            'Luxembourg',
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPlaceListItem(BuildContext context, String image, String country, String place) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              image: DecorationImage(
+                image: NetworkImage(image),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  country,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  place,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            decoration: BoxDecoration(
+              color: const Color(0xFF4DD5C5),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
+              'Explore',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\sign_in_page.dart =====
 import 'package:flutter/material.dart';
 import 'sign_up_page.dart';
-import 'forget_password_page.dart'; // Add this import
+import 'forget_password_page.dart';
 
 class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
@@ -416,12 +1861,11 @@ class SignInPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 
-                // FIXED: Made "Forgot password?" clickable
+                // Clickable "Forgot password?"
                 Align(
                   alignment: Alignment.centerRight,
                   child: GestureDetector(
                     onTap: () {
-                      // Navigate to Forget Password page
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -446,9 +1890,8 @@ class SignInPage extends StatelessWidget {
                   height: 55,
                   child: ElevatedButton(
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Sign in pressed')),
-                      );
+                      // Navigate to HomePage after successful sign in
+                      Navigator.pushReplacementNamed(context, '/home');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF4DB8B8),
@@ -602,11 +2045,96 @@ class SignInPage extends StatelessWidget {
     );
   }
 }
-===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\sign_up_page.dart =====
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\sign_up_page.dart =====
 import 'package:flutter/material.dart';
+// Import your reusable widgets and user preferences
+// import 'widgets/reusable_widgets.dart';
+// import 'services/user_preferences.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  // Email validator
+  String? _validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your email';
+    }
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    if (!emailRegex.hasMatch(value)) {
+      return 'Please enter a valid email';
+    }
+    return null;
+  }
+
+  // Password validator
+  String? _validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your password';
+    }
+    if (value.length < 6) {
+      return 'Password must be at least 6 characters';
+    }
+    return null;
+  }
+
+  // Confirm password validator
+  String? _validateConfirmPassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please confirm your password';
+    }
+    if (value != _passwordController.text) {
+      return 'Passwords do not match';
+    }
+    return null;
+  }
+
+  // Sign up action
+  void _handleSignUp() {
+    if (_formKey.currentState!.validate()) {
+      // Save user data (in real app, save to database/backend)
+      // For now, we'll use UserPreferences
+      // final prefs = UserPreferences();
+      // bool success = prefs.registerUser(_emailController.text, _passwordController.text);
+      
+      // if (success) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Account created successfully!'),
+            backgroundColor: Color(0xFF4DB8B8),
+          ),
+        );
+        // Navigate to sign in
+        Navigator.pop(context);
+      // } else {
+      //   ScaffoldMessenger.of(context).showSnackBar(
+      //     const SnackBar(
+      //       content: Text('User already exists!'),
+      //       backgroundColor: Colors.red,
+      //     ),
+      //   );
+      // }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -616,283 +2144,317 @@ class SignUpPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 60),
-                const Center(
-                  child: Text(
-                    'Sign up',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 40),
-                const Text(
-                  'Email',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF4DB8B8),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFF4DB8B8),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Enter your Email',
-                      hintStyle: const TextStyle(
-                        color: Color(0xFF80D4D4),
-                        fontSize: 16,
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.email_outlined,
-                        color: Color(0xFF4DB8B8),
-                      ),
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 15,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 25),
-                const Text(
-                  'Password',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF4DB8B8),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFF4DB8B8),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Enter your password',
-                      hintStyle: const TextStyle(
-                        color: Color(0xFF80D4D4),
-                        fontSize: 16,
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.lock_outline,
-                        color: Color(0xFF4DB8B8),
-                      ),
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 15,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 25),
-                const Text(
-                  'Confirm',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Color(0xFF4DB8B8),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color(0xFF4DB8B8),
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                      hintText: 'Confirm your password',
-                      hintStyle: const TextStyle(
-                        color: Color(0xFF80D4D4),
-                        fontSize: 16,
-                      ),
-                      prefixIcon: const Icon(
-                        Icons.lock_outline,
-                        color: Color(0xFF4DB8B8),
-                      ),
-                      border: InputBorder.none,
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 15,
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 40),
-                SizedBox(
-                  width: double.infinity,
-                  height: 55,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text('Sign up pressed')),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF4DB8B8),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      elevation: 0,
-                    ),
-                    child: const Text(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 60),
+                  const Center(
+                    child: Text(
                       'Sign up',
                       style: TextStyle(
-                        fontSize: 18,
+                        fontSize: 28,
                         fontWeight: FontWeight.w600,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 25),
-                const Center(
-                  child: Text(
-                    'OR',
+                  const SizedBox(height: 40),
+                  
+                  // Email Field with Validation
+                  const Text(
+                    'Email',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: Color(0xFF4DB8B8),
                     ),
                   ),
-                ),
-                const SizedBox(height: 15),
-                const Center(
-                  child: Text(
-                    'Sign up with',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF4DB8B8),
+                  const SizedBox(height: 10),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color(0xFF4DB8B8),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(30),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        // Facebook sign up
-                      },
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFF1877F2),
+                    child: TextFormField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      validator: _validateEmail,
+                      decoration: const InputDecoration(
+                        hintText: 'Enter your Email',
+                        hintStyle: TextStyle(
+                          color: Color(0xFF80D4D4),
+                          fontSize: 16,
                         ),
-                        child: const Icon(
-                          Icons.facebook,
-                          color: Colors.white,
-                          size: 30,
+                        prefixIcon: Icon(
+                          Icons.email_outlined,
+                          color: Color(0xFF4DB8B8),
+                        ),
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
                         ),
                       ),
                     ),
-                    const SizedBox(width: 25),
-                    GestureDetector(
-                      onTap: () {
-                        // Twitter sign up
-                      },
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFF1DA1F2),
+                  ),
+                  const SizedBox(height: 25),
+                  
+                  // Password Field with Validation
+                  const Text(
+                    'Password',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF4DB8B8),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color(0xFF4DB8B8),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: TextFormField(
+                      controller: _passwordController,
+                      obscureText: !_isPasswordVisible,
+                      validator: _validatePassword,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your password',
+                        hintStyle: const TextStyle(
+                          color: Color(0xFF80D4D4),
+                          fontSize: 16,
                         ),
-                        child: const Center(
-                          child: Text(
-                            'ð•',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
+                        prefixIcon: const Icon(
+                          Icons.lock_outline,
+                          color: Color(0xFF4DB8B8),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: const Color(0xFF4DB8B8),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        ),
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  
+                  // Confirm Password Field
+                  const Text(
+                    'Confirm Password',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xFF4DB8B8),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color(0xFF4DB8B8),
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: TextFormField(
+                      controller: _confirmPasswordController,
+                      obscureText: !_isConfirmPasswordVisible,
+                      validator: _validateConfirmPassword,
+                      decoration: InputDecoration(
+                        hintText: 'Confirm your password',
+                        hintStyle: const TextStyle(
+                          color: Color(0xFF80D4D4),
+                          fontSize: 16,
+                        ),
+                        prefixIcon: const Icon(
+                          Icons.lock_outline,
+                          color: Color(0xFF4DB8B8),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _isConfirmPasswordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: const Color(0xFF4DB8B8),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                            });
+                          },
+                        ),
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 40),
+                  
+                  // Sign Up Button
+                  SizedBox(
+                    width: double.infinity,
+                    height: 55,
+                    child: ElevatedButton(
+                      onPressed: _handleSignUp,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF4DB8B8),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        'Sign up',
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 25),
+                  const Center(
+                    child: Text(
+                      'OR',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF4DB8B8),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  const Center(
+                    child: Text(
+                      'Sign up with',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xFF4DB8B8),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF1877F2),
+                          ),
+                          child: const Icon(
+                            Icons.facebook,
+                            color: Colors.white,
+                            size: 30,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 25),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFF1DA1F2),
+                          ),
+                          child: const Center(
+                            child: Text(
+                              'ð•',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 25),
-                    GestureDetector(
-                      onTap: () {
-                        // Google sign up
-                      },
-                      child: Container(
-                        width: 50,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: Colors.grey.shade300,
-                            width: 1,
+                      const SizedBox(width: 25),
+                      GestureDetector(
+                        onTap: () {},
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.grey.shade300,
+                              width: 1,
+                            ),
+                            color: Colors.white,
                           ),
-                          color: Colors.white,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Image.asset(
-                            'Images/google_logo.png',
-                            fit: BoxFit.contain,
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: Image.asset(
+                              'Images/google_logo.png',
+                              fit: BoxFit.contain,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 40),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already have an account ?',
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.grey.shade400,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        'Sign in',
+                    ],
+                  ),
+                  const SizedBox(height: 40),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Already have an account ?',
                         style: TextStyle(
                           fontSize: 14,
-                          color: Color(0xFF4DB8B8),
-                          fontWeight: FontWeight.w600,
+                          color: Colors.grey.shade400,
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 30),
-              ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text(
+                          ' Sign in',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF4DB8B8),
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 30),
+                ],
+              ),
             ),
           ),
         ),
@@ -900,11 +2462,11 @@ class SignUpPage extends StatelessWidget {
     );
   }
 }
-===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\success_screen.dart =====
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\success_screen.dart =====
 import 'package:flutter/material.dart';
 
 class SuccessScreen extends StatelessWidget {
-  const SuccessScreen({Key? key}) : super(key: key);
+  const SuccessScreen({super.key}); // FIXED
 
   @override
   Widget build(BuildContext context) {
@@ -918,7 +2480,6 @@ class SuccessScreen extends StatelessWidget {
             children: [
               const Spacer(),
               
-              // Success Icon
               Container(
                 width: 120,
                 height: 120,
@@ -927,7 +2488,7 @@ class SuccessScreen extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: const Color(0xFF2DD4A3).withOpacity(0.3),
+                      color: const Color(0xFF2DD4A3).withValues(alpha: 0.3), // FIXED
                       blurRadius: 20,
                       spreadRadius: 5,
                     ),
@@ -942,7 +2503,6 @@ class SuccessScreen extends StatelessWidget {
               
               const SizedBox(height: 40),
               
-              // Success Text
               const Text(
                 'Successful !',
                 style: TextStyle(
@@ -954,7 +2514,6 @@ class SuccessScreen extends StatelessWidget {
               
               const SizedBox(height: 16),
               
-              // Subtitle Text
               const Text(
                 'Your password has been reset successfully',
                 style: TextStyle(
@@ -967,13 +2526,11 @@ class SuccessScreen extends StatelessWidget {
               
               const Spacer(),
               
-              // OK Button
               SizedBox(
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigate back to Sign In and clear all previous screens
                     Navigator.pushNamedAndRemoveUntil(
                       context,
                       '/signin',
@@ -1006,7 +2563,7 @@ class SuccessScreen extends StatelessWidget {
     );
   }
 }
-===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\verification_page.dart =====
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\screens\verification_page.dart =====
 import 'package:flutter/material.dart';
 import 'success_screen.dart';
 
@@ -1052,7 +2609,6 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
             children: [
               const SizedBox(height: 20),
               
-              // Illustration Image
               SizedBox(
                 height: 250,
                 child: Image.network(
@@ -1063,7 +2619,6 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
               
               const SizedBox(height: 40),
               
-              // Title
               const Text(
                 'Enter verification code',
                 style: TextStyle(
@@ -1074,7 +2629,6 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
               
               const SizedBox(height: 10),
               
-              // Subtitle
               const Text(
                 "We've sent a verification code to your phone number.\nPlease enter the code to complete the process",
                 textAlign: TextAlign.center,
@@ -1086,7 +2640,6 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
               
               const SizedBox(height: 40),
               
-              // OTP Input Boxes
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: List.generate(5, (index) => _buildOtpBox(index)),
@@ -1094,13 +2647,11 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
               
               const SizedBox(height: 50),
               
-              // Verify Button
               SizedBox(
                 width: double.infinity,
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigate to Success Screen
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
@@ -1128,7 +2679,6 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
               
               const SizedBox(height: 15),
               
-              // Cancel Button
               SizedBox(
                 width: double.infinity,
                 height: 56,
@@ -1165,8 +2715,10 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
       height: 50,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        border: Border.all(color: const Color(0xFF2DD4A3).withOpacity(0.5)),
-        color: const Color(0xFF2DD4A3).withOpacity(0.1),
+        border: Border.all(
+          color: const Color(0xFF2DD4A3).withValues(alpha: 0.5), // FIXED
+        ),
+        color: const Color(0xFF2DD4A3).withValues(alpha: 0.1), // FIXED
       ),
       child: Center(
         child: TextField(
@@ -1191,6 +2743,414 @@ class _ResetPasswordVerificationPageState extends State<ResetPasswordVerificatio
             fontWeight: FontWeight.bold,
             color: Color(0xFF2DD4A3),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\services\user_preferences.dart =====
+import 'package:flutter/foundation.dart';
+
+// User Data Model
+class UserData {
+  String email;
+  String password;
+
+  UserData({required this.email, required this.password});
+}
+
+// Global state management for favorites and user data
+class UserPreferences extends ChangeNotifier {
+  static final UserPreferences _instance = UserPreferences._internal();
+  factory UserPreferences() => _instance;
+  UserPreferences._internal();
+
+  // Store registered users
+  final List<UserData> _registeredUsers = [];
+  
+  // Store favorite destination IDs
+  final Set<String> _favoriteIds = {};
+  
+  // Current logged in user
+  UserData? _currentUser;
+
+  // Getters
+  Set<String> get favoriteIds => _favoriteIds;
+  UserData? get currentUser => _currentUser;
+  List<UserData> get registeredUsers => _registeredUsers;
+
+  // Register new user
+  bool registerUser(String email, String password) {
+    // Check if user already exists
+    bool userExists = _registeredUsers.any((user) => user.email == email);
+    
+    if (!userExists) {
+      _registeredUsers.add(UserData(email: email, password: password));
+      notifyListeners();
+      return true;
+    }
+    return false;
+  }
+
+  // Login user
+  bool loginUser(String email, String password) {
+    try {
+      _currentUser = _registeredUsers.firstWhere(
+        (user) => user.email == email && user.password == password,
+      );
+      notifyListeners();
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Logout user
+  void logoutUser() {
+    _currentUser = null;
+    notifyListeners();
+  }
+
+  // Toggle favorite
+  void toggleFavorite(String destinationId) {
+    if (_favoriteIds.contains(destinationId)) {
+      _favoriteIds.remove(destinationId);
+    } else {
+      _favoriteIds.add(destinationId);
+    }
+    notifyListeners();
+  }
+
+  // Check if destination is favorite
+  bool isFavorite(String destinationId) {
+    return _favoriteIds.contains(destinationId);
+  }
+
+  // Get all favorites count
+  int get favoritesCount => _favoriteIds.length;
+}
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\widgets\reusable_widgets.dart =====
+import 'package:flutter/material.dart';
+
+// Reusable Custom Button
+class CustomButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final Color backgroundColor;
+  final Color textColor;
+  final double height;
+  final double fontSize;
+  final bool isOutlined;
+
+  const CustomButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+    this.backgroundColor = const Color(0xFF4DD5C5),
+    this.textColor = Colors.white,
+    this.height = 50,
+    this.fontSize = 16,
+    this.isOutlined = false,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      height: height,
+      child: isOutlined
+          ? OutlinedButton(
+              onPressed: onPressed,
+              style: OutlinedButton.styleFrom(
+                foregroundColor: backgroundColor,
+                side: BorderSide(color: backgroundColor, width: 2),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+              ),
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w600,
+                  color: backgroundColor,
+                ),
+              ),
+            )
+          : ElevatedButton(
+              onPressed: onPressed,
+              style: ElevatedButton.styleFrom(
+                backgroundColor: backgroundColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                elevation: 0,
+              ),
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w600,
+                  color: textColor,
+                ),
+              ),
+            ),
+    );
+  }
+}
+
+// Reusable Custom TextField
+class CustomTextField extends StatelessWidget {
+  final String label;
+  final String hintText;
+  final IconData icon;
+  final bool isPassword;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
+  final Color borderColor;
+
+  const CustomTextField({
+    Key? key,
+    required this.label,
+    required this.hintText,
+    required this.icon,
+    required this.controller,
+    this.isPassword = false,
+    this.validator,
+    this.borderColor = const Color(0xFF4DB8B8),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: borderColor,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(color: borderColor, width: 2),
+            borderRadius: BorderRadius.circular(30),
+          ),
+          child: TextFormField(
+            controller: controller,
+            obscureText: isPassword,
+            validator: validator,
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: TextStyle(
+                color: borderColor.withOpacity(0.5),
+                fontSize: 16,
+              ),
+              prefixIcon: Icon(icon, color: borderColor),
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 15,
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// Reusable Rating Badge
+class RatingBadge extends StatelessWidget {
+  final double rating;
+  final double size;
+
+  const RatingBadge({
+    Key? key,
+    required this.rating,
+    this.size = 12,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: size,
+        vertical: size / 2,
+      ),
+      decoration: BoxDecoration(
+        color: const Color(0xFF4DD5C5),
+        borderRadius: BorderRadius.circular(size * 2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.star, color: Colors.white, size: size + 2),
+          SizedBox(width: size / 3),
+          Text(
+            rating.toString(),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: size,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// Reusable Location Row
+class LocationRow extends StatelessWidget {
+  final String location;
+  final double iconSize;
+  final double fontSize;
+
+  const LocationRow({
+    Key? key,
+    required this.location,
+    this.iconSize = 16,
+    this.fontSize = 14,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Icon(Icons.location_on, size: iconSize, color: Colors.grey),
+        const SizedBox(width: 4),
+        Text(
+          location,
+          style: TextStyle(
+            fontSize: fontSize,
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// Reusable Category Chip
+class CategoryChip extends StatelessWidget {
+  final String label;
+  final bool isSelected;
+  final VoidCallback onTap;
+
+  const CategoryChip({
+    Key? key,
+    required this.label,
+    required this.isSelected,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.only(right: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFF4DD5C5) : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 2),
+            ),
+          ],
+        ),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black87,
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+          ),
+        ),
+      ),
+    );
+  }
+}
+===== C:\Users\SoftLaptop\Desktop\Mobile-Dev-Project-master\proj_v1\lib\main.dart =====
+import 'package:flutter/material.dart';
+import 'screens/onboarding_screen.dart';
+import 'screens/sign_in_page.dart';
+import 'screens/sign_up_page.dart';
+import 'screens/success_screen.dart';
+import 'screens/forget_password_page.dart';
+import 'screens/home_page.dart'; // New import for HomePage
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Travelo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/onboarding': (context) => const OnboardingScreen(),
+        '/signin': (context) => const SignInPage(),
+        '/signup': (context) => const SignUpPage(),
+        '/forgot': (context) => const ForgetPasswordPage(),
+        '/success': (context) => const SuccessScreen(),
+        '/home': (context) => const HomePage(), // Added home route
+      },
+      debugShowCheckedModeBanner: false,
+    );
+  }
+}
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) {
+        Navigator.pushReplacementNamed(context, '/onboarding');
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'Images/MainLogo.jpeg',
+              width: 150,
+              height: 150,
+              fit: BoxFit.contain,
+            ),
+            const SizedBox(height: 20)
+          ],
         ),
       ),
     );
