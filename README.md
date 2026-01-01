@@ -102,17 +102,17 @@ Travelo is a comprehensive travel discovery application that helps users explore
 ### Onboarding & Authentication
 | Splash Screen | Onboarding | Sign In | Sign Up |
 |:---:|:---:|:---:|:---:|
-| ![Splash](screenshots/splash.png) | ![Onboarding](screenshots/onboarding.png) | ![Sign In](screenshots/signin.png) | ![Sign Up](screenshots/signup.png) |
+| ![Splash](Images/splash.png) | ![Onboarding](Images/onboarding.png) | ![Sign In](Images/signin.png) | ![Sign Up](Images/signup.png) |
 
 ### Main Features
 | Home Screen | Search | Destination Details | Favorites |
 |:---:|:---:|:---:|:---:|
-| ![Home](screenshots/home.png) | ![Search](screenshots/search.png) | ![Details](screenshots/details.png) | ![Favorites](screenshots/favorites.png) |
+| ![Home](Images/home.png) | ![Search](Images/search.png) | ![Details](Images/details.png) | ![Favorites](Images/favorites.png) |
 
 ### Additional Features
 | Mood Selection | Places List | Forgot Password | Success |
 |:---:|:---:|:---:|:---:|
-| ![Mood](screenshots/mood.png) | ![Places](screenshots/places.png) | ![Forgot](screenshots/forgot.png) | ![Success](screenshots/success.png) |
+| ![Mood](Images/mood.png) | ![Places](Images/places.png) | ![Forgot](Images/forgot.png) | ![Success](Images/success.png) |
 
 </div>
 
@@ -562,8 +562,8 @@ SOFTWARE.
 **Ahmed Khalid**
 
 - GitHub: [@ahmed-khalid2004](https://github.com/ahmed-khalid2004)
-- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/your-profile)
-- Email: your.email@example.com
+- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/ahmed-k-5b6349259)
+- Email: engahmedkhalid3s@gmail.com
 
 ---
 
