@@ -562,7 +562,7 @@ SOFTWARE.
 **Ahmed Khalid**
 
 - GitHub: [@ahmed-khalid2004](https://github.com/ahmed-khalid2004)
-- LinkedIn: [Your LinkedIn](https://www.linkedin.com/in/ahmed-k-5b6349259)
+- LinkedIn: [Ahmed Khaled](https://www.linkedin.com/in/ahmed-k-5b6349259)
 - Email: engahmedkhalid3s@gmail.com
 
 ---
